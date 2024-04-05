@@ -48,7 +48,6 @@ import org.ballerinalang.docgen.generator.model.search.SearchJson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wso2.ballerinalang.compiler.util.ProjectDirConstants;
-import org.wso2.ballerinalang.util.RepoUtils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -264,8 +263,7 @@ public class BallerinaDocGenerator {
     }
 
     private static void copyDocerinaUI(Path output) {
-        String source = RepoUtils.getRemoteRepoURL();
-        source = source.replace("/registry", "/docs/doc-ui");
+        String source = "https://api.dev-central.ballerina.io/2.0/docs/doc-ui";
         Path docsDirPath = ProjectUtils.createAndGetHomeReposPath().resolve(DOCS_FOLDER_NAME);
         Path sha256FilePath = docsDirPath.resolve(SHA256_HASH_FILE_NAME);
         Path zipFilePath = docsDirPath.resolve(BALLERINA_DOC_UI_ZIP_FILE_NAME);
